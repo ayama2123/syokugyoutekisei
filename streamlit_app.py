@@ -54,7 +54,7 @@ if st.button("結果を見る"):
         strong_interests = ", ".join(interests["興味が強い"])
         prompt = f"以下の項目に強い興味を示しています: {strong_interests}. これらの興味に基づいた職業に関するアドバイスを提供してください。"
         response = openai.Completion.create(
-            engine="text-davinci-003",
+            engine="gpt-4o-mini",
             prompt=prompt,
             max_tokens=150
         )
