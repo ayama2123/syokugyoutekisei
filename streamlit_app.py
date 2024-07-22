@@ -33,12 +33,13 @@ st.title("職業適性検査")
 
 # 質問を表示し、回答を収集
 for i, question in enumerate(questions):
+    st.write(question)
     cols = st.columns(len(options))
-    with st.container():
-        st.write(question)
-        for col, option in zip(cols, options):
-            if col.radio("", options=[option], key=f"{i}-{option}"):
-                responses[question] = option
+    response = None
+    for j, (col, option) in enumerate(zip(cols, options)):
+        if col.button(option, key=f"{i}-{j}"):
+            response = option
+    responses[question] = response
 
 # 結果を解析して表示
 if st.button("結果を見る"):
