@@ -5,23 +5,6 @@ import os
 # Streamlitのページ設定
 st.set_page_config(page_title="職業適性検査")
 
-# カスタムCSSを適用
-st.markdown(
-    """
-    <style>
-    .stRadio > div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    .stRadio > div > label {
-        margin-right: 10px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 # OpenAI APIキーの設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
@@ -50,8 +33,9 @@ st.title("職業適性検査")
 
 # 質問を表示し、回答を収集
 for i, question in enumerate(questions):
-    st.write(question)
-    response = st.radio("", options, key=f"q{i}", horizontal=True)
+    cols = st.columns([2, 1, 1, 1])  # 列幅を調整
+    cols[0].write(question)
+    response = cols[1].radio("", options, key=f"q{i}")
     responses[question] = response
     
 # 結果を解析して表示
