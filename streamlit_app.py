@@ -23,7 +23,7 @@ questions = [
 ]
 
 # 回答選択肢
-options = ["やりたい", "どちらともいえない", "やりたくない"]
+options = ["やりたい", "やりたくない", "どちらともいえない"]
 
 # 回答を保存するための辞書
 responses = {}
@@ -34,7 +34,7 @@ st.title("職業適性検査")
 # 質問を表示し、回答を収集
 for i, question in enumerate(questions):
     st.write(f"**{i+1}. {question}**")
-    response = st.radio("", options, key=f"q{i}", horizontal=True)
+    response = st.radio("", options, index=2, key=f"q{i}", horizontal=True)
     responses[question] = response
     
 # 結果を解析して表示
