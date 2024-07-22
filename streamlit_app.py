@@ -70,7 +70,7 @@ for i, question in enumerate(questions):
     responses[question] = response
     
 # 結果を解析して表示
-if st.button("結果を見る"):
+if st.button("分析を開始（少し時間がかかります）"):
     interests = {"興味が強い": [], "興味が低い": []}
     for question, response in responses.items():
         if response == "やりたい":
