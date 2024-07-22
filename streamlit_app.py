@@ -58,7 +58,7 @@ if st.button("結果を見る"):
                 {"role": "user", "content": prompt}
             ]
         )
-        advice = response.choices[0]['text'].strip()
+        advice = response.['choices'][0]['text'].strip()
         st.write("### あなたに合う職業の提案")
         st.write(advice)
     else:
