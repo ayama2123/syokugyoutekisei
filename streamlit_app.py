@@ -49,7 +49,7 @@ if st.button("結果を見る"):
     if interests["興味が強い"] or interests["興味が低い"]:
         strong_interests = ", ".join(interests["興味が強い"])
         low_interests = ", ".join(interests["興味が低い"])
-        prompt = f"以下の項目に基づいて職業を提案してください。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
+        prompt = f"以下の項目に基づいて興味関心の傾向と適していると考えられる職業を提案してください。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
 
         response = openai.chat.completions.create(
             model="gpt-4o-mini",
