@@ -32,7 +32,7 @@ responses = {}
 st.title("職業適性検査")
 
 # 質問を表示し、回答を収集
-for i, question in enumerate(questions)):
+for i, question in enumerate(questions):
     st.write(question)
     response = st.radio("", options, key=f"q{i}", horizontal=True)
     responses[question] = response
