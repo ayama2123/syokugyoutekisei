@@ -5,6 +5,23 @@ import os
 # Streamlitのページ設定
 st.set_page_config(page_title="職業適性検査")
 
+# カスタムCSSを適用
+st.markdown(
+    """
+    <style>
+    .stRadio > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .stRadio > div > label {
+        margin-right: 10px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # OpenAI APIキーの設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
