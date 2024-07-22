@@ -52,7 +52,7 @@ if st.button("結果を見る"):
         prompt = f"以下の項目に基づいて職業を提案してください。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
 
         response = openai.chat.completions.create(
-            engine="gpt-4o-mini",
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "あなたは回答結果に応じて職業興味と適職を診断するGPTです。"},
                 {"role": "user", "content": prompt}
