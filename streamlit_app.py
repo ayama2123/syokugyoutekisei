@@ -82,7 +82,7 @@ if st.button("分析を開始（少し時間がかかります）"):
     if interests["興味が強い"] or interests["興味が低い"]:
         strong_interests = ", ".join(interests["興味が強い"])
         low_interests = ", ".join(interests["興味が低い"])
-        prompt = f"以下の項目に基づいて2つを提案します。ひとつは興味関心の傾向です。もうひとつは適している職業です。ただし提案は10代の初めての就活を前提が前提であり職歴が無くても始めやすいものを想定します。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
+        prompt = f"以下の項目に基づいて2つを出力します。ひとつは興味関心の傾向の分析結果です。もうひとつは適している職業を3つ提案します。ただし提案は10代の初めての就活を前提が前提であり職歴が無くても始めやすいものを想定します。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
 
         response = openai.chat.completions.create(
             model="gpt-4o-mini",
