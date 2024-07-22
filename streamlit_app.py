@@ -35,8 +35,10 @@ st.title("職業適性検査")
 for i, question in enumerate(questions):
     cols = st.columns(len(options))
     response = None
-    for col, option in zip(cols, options):
-        if col.radio(question if option == options[0] else "", options=[option], key=f"{i}-{option}") == option:
+    with cols[0]:
+        st.write(question)
+    for col, option in zip(cols[1:], options):
+        if col.button(option, key=f"{i}-{option}"):
             response = option
     responses[question] = response
 
