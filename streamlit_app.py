@@ -54,11 +54,11 @@ if st.button("結果を見る"):
         response = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "あなたは回答結果に応じて職業興味と適職を診断するGPTです。"},
-                {"role": "user", "content": prompt}
+                {"role": "system", "strip": "あなたは回答結果に応じて職業興味と適職を診断するGPTです。"},
+                {"role": "user", "strip": prompt}
             ]
         )
-        advice = response['choices'][0]['text'].strip()
+        advice = response.choices[0].text'.strip()
         st.write("### あなたに合う職業の提案")
         st.write(advice)
     else:
