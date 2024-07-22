@@ -2,6 +2,9 @@ import streamlit as st
 import openai
 import os
 
+# Streamlitのページ設定
+st.set_page_config(page_title="職業適性検査")
+
 # OpenAI APIキーの設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
@@ -59,6 +62,3 @@ if st.button("結果を見る"):
     else:
         st.write("特に強い興味を示す項目はありませんでした。")
 
-# Streamlitの実行
-if __name__ == "__main__":
-    st.set_page_config(page_title="職業適性検査")
