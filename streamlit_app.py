@@ -1,5 +1,6 @@
-import openai
 import streamlit as st
+import openai
+import os
 
 # OpenAI APIキーの設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
@@ -34,32 +35,26 @@ for i, question in enumerate(questions):
 
 # 結果を解析して表示
 if st.button("結果を見る"):
-    interests = {"興味が強い": [], "どちらともいえない": [], "興味が低い": []}
+    interests = {"興味が強い": [], "興味が低い": []}
     for question, response in responses.items():
         if response == "やりたい":
             interests["興味が強い"].append(question)
-        elif response == "どちらともいえない":
-            interests["どちらともいえない"].append(question)
-        else:
+        elif response == "やりたくない":
             interests["興味が低い"].append(question)
 
-    st.write("### あなたの興味の結果")
-    for interest, questions in interests.items():
-        st.write(f"**{interest}**")
-        for question in questions:
-            st.write(f"- {question}")
-
-    # 回答結果を元にChatGPT APIを使用して文章を生成
-    if interests["興味が強い"]:
+    # ChatGPT APIを使用して職業を提案
+    if interests["興味が強い"] or interests["興味が低い"]:
         strong_interests = ", ".join(interests["興味が強い"])
-        prompt = f"以下の項目に強い興味を示しています: {strong_interests}. これらの興味に基づいた職業に関するアドバイスを提供してください。"
-        response = openai.Completion.create(
+        low_interests = ", ".join(interests["興味が低い"])
+        prompt = f"以下の項目に基づいて職業を提案してください。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
+
+        response = openai.chat.completions.create(
             engine="gpt-4o-mini",
             prompt=prompt,
             max_tokens=150
         )
         advice = response.choices[0].text.strip()
-        st.write("### 職業に関するアドバイス")
+        st.write("### あなたに合う職業の提案")
         st.write(advice)
     else:
         st.write("特に強い興味を示す項目はありませんでした。")
