@@ -32,10 +32,9 @@ responses = {}
 st.title("職業適性検査")
 
 # 質問を表示し、回答を収集
-for i, question in enumerate(questions):
-    cols = st.columns([2, 1, 1, 1])  # 列幅を調整
-    cols[0].write(question)
-    response = cols[1].radio("", options, key=f"q{i}")
+for i, question in enumerate(questions)):
+    st.write(question)
+    response = st.radio("", options, key=f"q{i}", horizontal=True)
     responses[question] = response
     
 # 結果を解析して表示
