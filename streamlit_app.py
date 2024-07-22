@@ -3,7 +3,7 @@ import openai
 import os
 
 # Streamlitのページ設定
-st.set_page_config(page_title="職業適性検査")
+st.set_page_config(page_title="職業興味チェッカー")
 
 # OpenAI APIキーの設定
 openai.api_key = os.getenv('OPENAI_API_KEY')
@@ -61,7 +61,7 @@ options = ["やりたい", "やりたくない", "どちらともいえない"]
 responses = {}
 
 # ヘッダー
-st.title("職業適性検査")
+st.title("職業興味チェッカー")
 
 # 質問を表示し、回答を収集
 for i, question in enumerate(questions):
