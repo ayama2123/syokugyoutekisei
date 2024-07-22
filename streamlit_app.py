@@ -66,7 +66,7 @@ st.title("職業適性検査")
 # 質問を表示し、回答を収集
 for i, question in enumerate(questions):
     st.write(f"**{i+1}. {question}**")
-    response = st.radio("", options, index=2, horizontal=True)
+    response = st.radio("", options, index=2, key=f"q{i}", horizontal=True)
     responses[question] = response
     
 # 結果を解析して表示
@@ -82,7 +82,7 @@ if st.button("分析を開始（少し時間がかかります）"):
     if interests["興味が強い"] or interests["興味が低い"]:
         strong_interests = ", ".join(interests["興味が強い"])
         low_interests = ", ".join(interests["興味が低い"])
-        prompt = f"以下の項目に基づいて興味関心の傾向と適していると考えられる職業を提案してください。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
+        prompt = f"以下の項目に基づいて興味関心の傾向と適していると考えられる職業を３個提案してください。提案は10代の初めての就活を前提にして職歴が無くても始めやすいものを提案します。\n\n興味が強い項目: {strong_interests}\n興味が低い項目: {low_interests}\n"
 
         response = openai.chat.completions.create(
             model="gpt-4o-mini",
