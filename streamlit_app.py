@@ -62,6 +62,7 @@ responses = {}
 
 # ヘッダー
 st.title("職業興味チェッカー")
+st.write("それぞれの項目にやりたい、やりたくない…と選んでいくと、あなたに合いそうな仕事が３つ出てきます。")
 
 # 質問を表示し、回答を収集
 for i, question in enumerate(questions):
